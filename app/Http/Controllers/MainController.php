@@ -365,7 +365,55 @@ class MainController extends Controller
                                         return back()->with('fail','Something went wrong');
                                     }
                                 
-                                    }    
+                                    }   
+                                    
+                                    public function addExpenses(){
+                                        return view('Admin.addexpenses');
+                                     }
+                            
+                                     public function insertExpenses(Request $request){
+                                       //return $request->input();
+                                       $editexpenses = new Expenses();
+                                       $editexpenses->name=$request->input('name');
+                                       $editexpenses->description=$request->input('description');
+                                       $editexpenses->amount=$request->input('amount');
+                                       $editexpenses->save();
+                                        return back()->with('success','Expenses Added Successfully');
+                                        }
+                                        public function viewExpenses(){
+                                            $posts= Expenses::get();
+                                            //var_dump('$posts');
+                                           return view('Admin.viewexpenses', compact('posts'));
+                                        }
+                            
+                                        public function expensesDetails($id){
+                                            $viewexpenses= DB::table('Expenses')->where('id', $id)->first();
+                                            return view('Admin.expensesdetails', compact('viewexpenses'));
+                                        }
+                                        public function editExpenses($id){
+                                            $editexpenses= DB::table('Expenses')->where('id', $id)->first();
+                                            return view('Admin.editexpenses', compact('editexpenses'));
+                                        }
+                                    
+                                        public function postEditExpenses($id, Request $request){
+                                        $editexpenses = Expenses::findOrFail($request->id);
+                                        $editexpenses->name=$request->input('name');
+                                        $editexpenses->description=$request->input('description');
+                                        $editexpenses->amount=$request->input('amount');          
+                                        $editexpenses->save();
+                                         return back()->with('success','Expenses Updated Successfully'); 
+                                     
+                                         }
+                                         public function deleteExpenses($id){
+                                            $delquery= DB::table('Expenses')->where('id', $id)->delete();
+                                            if($delquery){
+                                                return back()->with('success','Expenses Deleted Sussessfully');
+                                            }
+                                            else{
+                                                return back()->with('fail','Something went wrong');
+                                            }
+                                        
+                                            }
                                     
  public function searchData(Request $request){
   // return $request->input();

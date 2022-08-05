@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 05, 2022 at 06:37 AM
+-- Generation Time: Aug 05, 2022 at 10:22 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -121,18 +121,19 @@ CREATE TABLE `expenses` (
   `id` int(6) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
   `amount` varchar(20) DEFAULT NULL,
-  `expdate` varchar(20) DEFAULT NULL,
   `description` varchar(255) NOT NULL,
-  `datetime` varchar(20) DEFAULT NULL
+  `created_at` varchar(50) DEFAULT NULL,
+  `updated_at` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `expenses`
 --
 
-INSERT INTO `expenses` (`id`, `name`, `amount`, `expdate`, `description`, `datetime`) VALUES
-(1, 'Fuel', '3000', '2022-07-14', 'Fuel for gen', '2022-07-14 17:50:54'),
-(2, 'Nylon', '1800', '2022-07-13', 'Bought nylon for selling', '2022-07-14 18:09:59');
+INSERT INTO `expenses` (`id`, `name`, `amount`, `description`, `created_at`, `updated_at`) VALUES
+(2, 'Nylon', '1800', 'Bought nylon for selling', '2022-08-05 09:47:39', '2022-08-05 09:47:39'),
+(3, 'Software Renewal', '25000', 'Hosting, Domain and Security Renewal Made for year 2022', '2022-08-05 09:47:39', '2022-08-05 09:47:39'),
+(4, 'Fuel for Gen', '3000', 'Fuel usef in the gen during excos electioin', '2022-08-05 10:21:04', '2022-08-05 10:21:04');
 
 -- --------------------------------------------------------
 
@@ -510,7 +511,7 @@ ALTER TABLE `dues`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`

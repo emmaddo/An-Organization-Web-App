@@ -31,7 +31,7 @@
 @include('Admin/include.menu');
 <!-- menu ends here --> 
 @if(!isset(Auth::user()->email))
-<script>window.location="login";</script>
+<script>window.location="{{url('Admin/login')}}"</script>
 @endif
       <div class="main-panel">
         <div class="content-wrapper">
@@ -75,7 +75,7 @@
           
           
           <div class="form-group">
-            <label for="exampleTextarea1">Miinutes Content</label>
+            <label for="exampleTextarea1">Memo Content</label>
             <textarea name="content" class="form-control" id="exampleTextarea1" rows="4" readonly>{{$viewmemo->content}}</textarea>
           </div>
                       

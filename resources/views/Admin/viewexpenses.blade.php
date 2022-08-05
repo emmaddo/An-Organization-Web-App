@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
-  <title>Minutes Details</title>
+  <title>View Expenses</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- CSRF Token -->
   <meta name="_token" content="iOFHvxnnvQTiXxlCQ4HnHbqv8OWeGmpesk0fqKkI">
-  
- <link rel="shortcut icon" href="{{asset('../assets/images/favicon.ico')}}">
+  <link rel="shortcut icon" href="{{asset('../assets/images/favicon.ico')}}">
 
   <!-- plugin css -->
   <link media="all" type="text/css" rel="stylesheet" href="{{asset('../assets/plugins/%40mdi/font/css/materialdesignicons.min.css')}}">
@@ -19,32 +19,30 @@
   <!-- end plugin css -->
 
     <link media="all" type="text/css" rel="stylesheet" href="{{asset('../assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}">
+    <link media="all" type="text/css" rel="stylesheet" href="{{asset('../assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.css')}}">
 
   <!-- common css -->
   <link media="all" type="text/css" rel="stylesheet" href="{{asset('../css/app.css')}}">
   <!-- end common css -->
 
+
+
   </head>
 <body data-base-url="https://www.bootstrapdash.com/demo/justdo-laravel-pro/template/vertical-default-light">
 
-<!-- menu starts here -->
-@include('Admin/include.menu');
+  <!-- menu starts here -->
+@include('Admin/include.menu')
 <!-- menu ends here --> 
 @if(!isset(Auth::user()->email))
-<script>window.location="login";</script>
+<script>window.location="{{url('Admin/login')}}"</script>
 @endif
+
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row">
-
-  <div class="col-12 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Minutes Details</h4>
-        <!--<p class="card-description">
-          Basic form elements
-        </p>-->
-        @if(Session::get('success'))
+          <div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Expenses Made</h4>
+    @if(Session::get('success'))
             <div class="alert alert-success">
 
             {{Session::get('success')}}
@@ -57,52 +55,56 @@
             {{session::get('fail')}}
             </div>
           @endif
-        <form class="forms-sample" enctype="multipart/form-data">
-      
-        <center>
-       <img src="{{ url('../storage/front/images/minutes/'.$viewminutes->image_name) }}" width="200px" alt="No Image for this Minutes" />
-            
-       </center>
-       <div class="form-group">
-            <label for="exampleInputName1">Minutes Date</label>
-            <input type="text" name="title" value="{{$viewminutes->created_at}}" class="form-control" id="exampleInputName1" readonly>
+    <div class="row">
+      <div class="col-12">
+        <div class="table-responsive">
+            <table id="order-listing" class="table">
+              <thead>
+                <tr>
+                  <th>SN</th>
+                  <th>Expenses Name</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>View</th>
+				  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($posts as $post)
+                <tr>
+                  <td>{{$loop->iteration}}</td>
+                  <td>{{$post->name}}</td>
+                  <td>{{number_format($post->amount, 2)}}</td>
+                  <td>{{$post->created_at}}</td>
+                  
+                  <!--<td>
+                    <label class="badge badge-info">On hold</label>
+                  </td>-->
+                  <td>
+                    <a href="{{url('Admin/ExpensesDetails/'.$post->id)}}" class="btn btn-outline-primary">View</a>
+                  </td>
+				   <td><a class="pe-2" href="{{url('Admin/EditExpenses/'.$post->id)}}"> <i class="mdi mdi-table-edit"></i></a> <a href="{{url('Admin/DeleteExpenses/'.$post->id)}}" onclick="return confirm('Are you sure you want to delete this Expenses?')"> <i class="mdi mdi-delete"></i></a></td>
+                </tr>
+                @endforeach
+               
+              </tbody>
+            </table>
           </div>
-        <div class="form-group">
-            <label for="exampleInputName1">Minutes Topic</label>
-            <input type="text" name="title" value="{{$viewminutes->topic}}" class="form-control" id="exampleInputName1" readonly>
-          </div>
-          
-          
-          
-          <div class="form-group">
-            <label for="exampleTextarea1">Minutes Content</label>
-            <textarea name="content" class="form-control" id="exampleTextarea1" rows="4" readonly>{{$viewminutes->content}}</textarea>
-          </div>
-                      
-          
-          
-         <!-- <div class="form-group">
-            <label for="exampleTextarea1">Textarea</label>
-            <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-          </div>-->
-          <a href="{{url('Admin/EditMinutes/'.$viewminutes->id)}}"  class="btn btn-primary mr-2">Edit Minutes</a>
-          
-        </form>
-      </div>
+        </div>
     </div>
   </div>
-
 </div>
         </div>
-       
-<!-- Footer starts here -->
-@include('Admin/include.footer');
-<!-- footer ends here -->
+     <!--  footer -->
+        @include('Admin/include.footer')
+        <!--=================================
+        footer -->
+
 	   </div>
     </div>
   </div>
 
- <!-- base js -->
+  <!-- base js -->
   <script src="{{asset('../js/app.js')}}"></script>
   <script src="{{asset('../assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
   <!-- end base js -->
@@ -111,6 +113,9 @@
     <script src="{{asset('../assets/plugins/icheck/icheck.min.js')}}"></script>
   <script src="{{asset('../assets/plugins/select2/js/select2.min.js')}}"></script>
   <script src="{{asset('../assets/plugins/typeaheadjs/typeahead.bundle.min.js')}}"></script>
+  <script src="{{asset('../assets/plugins/datatables.net/jquery.dataTables.min.js')}}"></script>
+  <script src="{{asset('../assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.js')}}"></script>
+  
   <!-- end plugin js -->
 
   <!-- common js -->
@@ -125,5 +130,6 @@
   <script src="{{asset('../assets/js/iCheck.js')}}"></script>
   <script src="{{asset('../assets/js/select2.js')}}"></script>
   <script src="{{asset('../assets/js/typeahead.js')}}"></script>
+  <script src="{{asset('../assets/js/data-table.js')}}"></script>
 </body>
 </html>

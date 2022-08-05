@@ -2,7 +2,7 @@
 <html>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
-  <title>Minutes Details</title>
+  <title>Expenses Details</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +31,7 @@
 @include('Admin/include.menu');
 <!-- menu ends here --> 
 @if(!isset(Auth::user()->email))
-<script>window.location="login";</script>
+<script>window.location="{{url('Admin/login')}}"</script>
 @endif
       <div class="main-panel">
         <div class="content-wrapper">
@@ -40,7 +40,7 @@
   <div class="col-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Minutes Details</h4>
+        <h4 class="card-title">Expenses Details</h4>
         <!--<p class="card-description">
           Basic form elements
         </p>-->
@@ -59,33 +59,24 @@
           @endif
         <form class="forms-sample" enctype="multipart/form-data">
       
-        <center>
-       <img src="{{ url('../storage/front/images/minutes/'.$viewminutes->image_name) }}" width="200px" alt="No Image for this Minutes" />
-            
-       </center>
        <div class="form-group">
-            <label for="exampleInputName1">Minutes Date</label>
-            <input type="text" name="title" value="{{$viewminutes->created_at}}" class="form-control" id="exampleInputName1" readonly>
+            <label for="exampleInputName1">Expenses Date</label>
+            <input type="text" name="title" value="{{$viewexpenses->created_at}}" class="form-control" id="exampleInputName1" readonly>
           </div>
-        <div class="form-group">
-            <label for="exampleInputName1">Minutes Topic</label>
-            <input type="text" name="title" value="{{$viewminutes->topic}}" class="form-control" id="exampleInputName1" readonly>
-          </div>
-          
-          
-          
           <div class="form-group">
-            <label for="exampleTextarea1">Minutes Content</label>
-            <textarea name="content" class="form-control" id="exampleTextarea1" rows="4" readonly>{{$viewminutes->content}}</textarea>
+            <label for="exampleInputName1">Expenses Amount</label>
+            <input type="text"  value="{{number_format($viewexpenses->amount,2)}}" class="form-control" id="exampleInputName1" readonly>
           </div>
-                      
-          
-          
-         <!-- <div class="form-group">
-            <label for="exampleTextarea1">Textarea</label>
-            <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-          </div>-->
-          <a href="{{url('Admin/EditMinutes/'.$viewminutes->id)}}"  class="btn btn-primary mr-2">Edit Minutes</a>
+
+        <div class="form-group">
+            <label for="exampleInputName1">Expenses Name</label>
+            <input type="text"  value="{{$viewexpenses->name}}" class="form-control" id="exampleInputName1" readonly>
+          </div>
+        
+          <div class="form-group">
+            <label for="exampleTextarea1">Expenses Description</label>
+            <textarea  class="form-control" id="exampleTextarea1" rows="4" readonly>{{$viewexpenses->description}}</textarea>
+          </div>
           
         </form>
       </div>
