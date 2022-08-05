@@ -3,7 +3,7 @@
 
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
-  <title>Individual Report</title>
+  <title>By Unit</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,9 +41,9 @@
         <div class="content-wrapper">
           <div class="card">
   <div class="card-body">
-    <h4 class="card-title">Individual Report</h4>
+    <h4 class="card-title">Reports By Unit</h4>
     <div class="table-responsive">
-    <form id="form1" method="POST" action="{{url('Admin/postbyindividual')}}" enctype="multipart/form-data">
+    <form id="form1" method="POST" action="{{url('Admin/postbyunit')}}" enctype="multipart/form-data">
     @csrf  
     <table class="table table-striped table-bordered table-hover table-green">
 <tr>
@@ -88,7 +88,7 @@
                   <th>SN</th>
                   <th>Name</th>
                   
-                  <th>Email</th>
+                  
                   <th>Total Payment</th>
                   <th>View</th>
 				  
@@ -98,12 +98,12 @@
                 @foreach($eachpayment as $due)
                 <tr>
                   <td>{{$loop->iteration}}</td>
-                  <td>{{$due->name}}</td>
+                  <td>{{$due->unit}}</td>
                   
-                  <td>{{$due->email}}</td>
+                  
                   <td>{{number_format($due->sum,2)}}</td>
                    <td>
-                    <a href="{{url('Admin/ByIndividualDetails/'.$due->email)}}" class="btn btn-outline-primary">View Breakdown Report</a>
+                    <a href="{{url('Admin/ByUnitDetails/'.$due->unit)}}" class="btn btn-outline-primary">View Breakdown Report</a>
                   </td>
 				       </tr>
                 @endforeach

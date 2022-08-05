@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 05, 2022 at 04:46 AM
+-- Generation Time: Aug 05, 2022 at 06:37 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -79,6 +79,7 @@ CREATE TABLE `dues` (
   `email` varchar(50) DEFAULT NULL,
   `amount` varchar(50) DEFAULT NULL,
   `month` varchar(50) DEFAULT NULL,
+  `unit` varchar(50) DEFAULT NULL,
   `year` varchar(50) DEFAULT NULL,
   `datepaid` varchar(50) DEFAULT NULL,
   `remarks` varchar(100) DEFAULT NULL,
@@ -90,24 +91,25 @@ CREATE TABLE `dues` (
 -- Dumping data for table `dues`
 --
 
-INSERT INTO `dues` (`id`, `name`, `email`, `amount`, `month`, `year`, `datepaid`, `remarks`, `created_at`, `updated_at`) VALUES
-(36, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'January', '2022', '2022-08-01', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
-(37, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'February', '2022', '2022-08-01', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
-(38, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'March', '2022', '2022-08-02', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
-(39, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'April', '2022', '2022-08-02', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
-(40, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'May', '2022', '2022-08-02', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
-(41, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'June', '2022', '2022-08-03', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
-(42, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'July', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
-(43, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'August', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
-(44, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'September', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
-(45, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'October', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
-(46, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'November', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
-(47, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'December', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
-(48, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'January', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:19:37', '2022-08-04 10:19:37'),
-(49, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'February', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
-(50, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'March', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
-(51, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'April', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
-(52, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'May', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38');
+INSERT INTO `dues` (`id`, `name`, `email`, `amount`, `month`, `unit`, `year`, `datepaid`, `remarks`, `created_at`, `updated_at`) VALUES
+(36, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'January', 'Unit 2', '2022', '2022-08-01', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
+(37, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'February', 'Unit 2', '2022', '2022-08-01', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
+(38, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'March', 'Unit 2', '2022', '2022-08-02', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
+(39, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'April', 'Unit 2', '2022', '2022-08-02', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
+(40, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'May', 'Unit 2', '2022', '2022-08-02', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
+(41, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'June', 'Unit 2', '2022', '2022-08-03', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
+(42, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'July', 'Unit 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
+(43, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'August', 'Unit 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
+(44, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'September', 'Unit 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
+(45, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'October', 'Unit 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
+(46, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'November', 'Unit 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
+(47, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'December', 'Unit 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
+(48, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'January', 'Unit 1', '2022', '2022-08-01', 'Paid for the whole of year 2022', '2022-08-04 10:19:37', '2022-08-04 10:19:37'),
+(49, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'February', 'Unit 1', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
+(50, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'March', 'Unit 1', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
+(51, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'April', 'Unit 1', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
+(52, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'May', 'Unit 1', '2022', '2022-08-05', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
+(53, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'January', 'Unit 2', '2023', '2022-08-05', 'testing', '2022-08-05 05:41:39', '2022-08-05 05:41:39');
 
 -- --------------------------------------------------------
 
@@ -502,7 +504,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `dues`
 --
 ALTER TABLE `dues`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `expenses`

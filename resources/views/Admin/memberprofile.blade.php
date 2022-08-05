@@ -177,6 +177,7 @@
         @csrf 
                      <input type="hidden" name="email" value="{{$viewmember->email}}" class="form-control" id="recipient-name" readonly>
                      <input type="hidden" name="name" value="{{$viewmember->name}}" class="form-control" id="recipient-name" readonly>
+                     <input type="hidden" name="unit" value="{{$viewmember->unit}}" class="form-control" id="recipient-name" readonly>
                  
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Amount</label>

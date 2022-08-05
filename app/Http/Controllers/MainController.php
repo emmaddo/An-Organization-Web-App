@@ -405,6 +405,7 @@ else{
 $dues = new Dues();
     $dues->name=$request->input('name');
     $dues->email=$request->input('email');
+    $dues->unit=$request->input('unit');
     $dues->amount=$request->input('amount');
     $dues->month=$value;
     $dues->year=$request->input('year');

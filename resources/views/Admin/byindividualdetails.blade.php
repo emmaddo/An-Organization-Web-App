@@ -34,7 +34,7 @@
 @include('Admin/include.menu')
 <!-- menu ends here --> 
 @if(!isset(Auth::user()->email))
-<script>window.location="login";</script>
+<script>window.location="{{url('Admin/login')}}"</script>
 @endif
 
       <div class="main-panel">

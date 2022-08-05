@@ -3,7 +3,7 @@
 
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
-  <title>Individual Report</title>
+  <title>Unit Detailed Report</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,9 +41,9 @@
         <div class="content-wrapper">
           <div class="card">
   <div class="card-body">
-    <h4 class="card-title">Individual Report</h4>
+    <h4 class="card-title">Unit Detailed Report</h4>
     <div class="table-responsive">
-    <form id="form1" method="POST" action="{{url('Admin/postbyindividual')}}" enctype="multipart/form-data">
+    <form id="form1" method="POST" action="{{url('Admin/postbyunitdetails/'.$ind->unit)}}" enctype="multipart/form-data">
     @csrf  
     <table class="table table-striped table-bordered table-hover table-green">
 <tr>
@@ -64,7 +64,12 @@
 
 </table>
 </form> 
-</div>  
+</div> 
+<br> 
+<p>Name: {{$ind->unit}}<br>
+Total Paid: {{number_format($totalamount,2)}}
+
+</p>
 <br>            
     @if(Session::get('success'))
             <div class="alert alert-success">
@@ -87,10 +92,11 @@
                 <tr>
                   <th>SN</th>
                   <th>Name</th>
+                  <th>Amount</th>
+                  <th>Month</th>
+                  <th>Year</th>
+                  <th>Date Paid</th>
                   
-                  <th>Email</th>
-                  <th>Total Payment</th>
-                  <th>View</th>
 				  
                 </tr>
               </thead>
@@ -98,14 +104,12 @@
                 @foreach($eachpayment as $due)
                 <tr>
                   <td>{{$loop->iteration}}</td>
-                  <td>{{$due->name}}</td>
-                  
-                  <td>{{$due->email}}</td>
-                  <td>{{number_format($due->sum,2)}}</td>
-                   <td>
-                    <a href="{{url('Admin/ByIndividualDetails/'.$due->email)}}" class="btn btn-outline-primary">View Breakdown Report</a>
-                  </td>
-				       </tr>
+                  <td>{{$due->unit}}</td>
+                  <td>{{number_format($due->amount,2)}}</td>
+                  <td>{{$due->month}}</td>
+                  <td>{{$due->year}}</td>
+                  <td>{{$due->created_at}}</td>
+                  </tr>
                 @endforeach
                
               </tbody>

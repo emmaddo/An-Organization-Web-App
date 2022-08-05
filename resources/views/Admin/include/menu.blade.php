@@ -442,7 +442,7 @@ Welcome {{ Auth::user()->email }}
             <a class="nav-link" href="{{url('Admin/ByIndividual')}}">By Individual</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="{{url('Admin/By Units')}}">By Units</a>
+            <a class="nav-link" href="{{url('Admin/ByUnit')}}">By Units</a>
           </li>
           
         </ul>
