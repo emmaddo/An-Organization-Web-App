@@ -32,8 +32,21 @@ class MainController extends Controller
         $no_news=News::count();
         $posts= DB::table('customer')->orderBy('id', 'DESC')->get();
         $news=News::get();
+        $units=Units::leftJoin('Users', 'units.unitname', '=', 'users.unit')
+        ->selectRaw('count(Users.id) as MembersCount, Units.unitname')
+        ->groupBy('Units.unitname')
+        ->orderBy('Units.unitname', 'ASC')
+        ->get();
+      //dd($units);
+        //$locations=Locations::orderBy('locationname', 'ASC')->get();
+        $locations=Locations::leftJoin('Units', 'Units.location', '=', 'Locations.locationname')
+        ->selectRaw('count(Units.id) as UnitCount, Locations.locationname')
+        ->groupBy('Locations.locationname')
+        ->orderBy('Locations.locationname', 'ASC')
+        ->get();
+        //dd($locations);
         return view('Admin.dashboard', compact('customerCount', 'totalExpenses', 'posts', 'totaldues', 'duesmonth', 
-        'duesyear', 'no_members', 'no_excos', 'no_units', 'no_news','news'));
+        'duesyear', 'no_members', 'no_excos', 'no_units', 'no_news', 'news', 'units', 'locations'));
     }
 
       

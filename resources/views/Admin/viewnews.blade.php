@@ -75,7 +75,8 @@
                 <tr>
                   <td>{{$loop->iteration}}</td>
                   <td>{{$post->title}}</td>
-                  <td>{{$post->intro}}</td>
+                  <!--<td>{{substr($post->intro,0,20)}}</td>this worked too-->
+                  <td>{{Str::limit($post->intro,20)}}</td>
                   <td>{{$post->created_at}}</td>
                   
                   <!--<td>

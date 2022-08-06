@@ -74,14 +74,14 @@
               <label class="form-check-label text-muted">
                 <input type="checkbox" class="form-check-input"><i class="input-helper"></i> Keep me signed in </label>
             </div>
-            <a href="#" class="auth-link text-black">Forgot password?</a>
+           <!-- <a href="#" class="auth-link text-black">Forgot password?</a>-->
           </div>
          <!-- <div class="mb-2">
             <button type="button" class="btn btn-block btn-facebook auth-form-btn">
               <i class="mdi mdi-facebook mr-2"></i>Connect using facebook </button>
           </div>-->
-          <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="register-3.html" class="text-primary">Create</a>
-          </div>
+          <!--<div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="register-3.html" class="text-primary">Create</a>
+          </div>-->
         </form>
       </div>
     </div>

@@ -141,7 +141,7 @@ Welcome {{ Auth::user()->email }}
      <div class="p-3">
       <div class="list-wrapper">
         <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
-          <li>
+          <!--<li>
             <div class="form-check form-check-flat">
               <label class="form-check-label">
                 <input class="checkbox" type="checkbox">
@@ -149,7 +149,7 @@ Welcome {{ Auth::user()->email }}
               </label>
             </div>
             <i class="remove ti-close"></i>
-          </li>
+          </li>-->
           
          
           

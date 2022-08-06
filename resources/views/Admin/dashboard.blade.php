@@ -157,7 +157,9 @@ Welcome {{ Auth::user()->name }}
                             <h5 class="mb-0">0.036%</h5>
                           </div>
                         </div> --> 
+                       <!-- <p class="text-white font-weight-light pr-lg-2 pr-xl-5"><a href="{{url('Admin/EditNews/'.$new->id)}}">{{$new->title}}</a></p>-->
                         <p class="text-white font-weight-light pr-lg-2 pr-xl-5">{{$new->title}}</p>
+                      
                       </div>
                     </div>
                   </div>
@@ -212,60 +214,30 @@ Welcome {{ Auth::user()->name }}
     <div class="col-md-7 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <p class="card-title mb-0">Top Products</p>
+          <p class="card-title mb-0">Registered Units</p>
           <div class="table-responsive">
             <table class="table table-striped table-borderless">
               <thead>
+                
                 <tr>
-                  <th>Product</th>
-                  <th>Price</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                </tr>  
+                  <th>SN</th>
+                  <th>Unit Name</th>
+                  <th>No. of Members</th>
+                  <th>View</th>
+                </tr> 
+               
               </thead>
               <tbody>
+              @foreach($units as $unit)
                 <tr>
-                  <td>Search Engine Marketing</td>
-                  <td class="font-weight-bold">$362</td>
-                  <td>21 Sep 2018</td>
-                  <td class="font-weight-medium text-success">Completed</td>
+                  <td>{{$loop->iteration}}</td>
+                  <td>{{$unit->unitname}}</td>
+                  <td>{{$unit->MembersCount}}</td>
+                  <td>
+                    <a href="{{url('Admin/UnitDetails/'.$unit->unitname)}}" class="btn btn-outline-primary">View Members</a>
+                  </td>
                 </tr>
-                <tr>
-                  <td>Search Engine Optimization</td>
-                  <td class="font-weight-bold">$116</td>
-                  <td>13 Jun 2018</td>
-                  <td class="font-weight-medium text-success">Completed</td>
-                </tr>
-                <tr>
-                  <td>Display Advertising</td>
-                  <td class="font-weight-bold">$551</td>
-                  <td>28 Sep 2018</td>
-                  <td class="font-weight-medium text-warning">Pending</td>
-                </tr>
-                <tr>
-                  <td>Pay Per Click Advertising</td>
-                  <td class="font-weight-bold">$523</td>
-                  <td>30 Jun 2018</td>
-                  <td class="font-weight-medium text-warning">Pending</td>
-                </tr>
-                <tr>
-                  <td>E-Mail Marketing</td>
-                  <td class="font-weight-bold">$781</td>
-                  <td>01 Nov 2018</td>
-                  <td class="font-weight-medium text-danger">Cancelled</td>
-                </tr>
-                <tr>
-                  <td>Referral Marketing</td>
-                  <td class="font-weight-bold">$283</td>
-                  <td>20 Mar 2018</td>
-                  <td class="font-weight-medium text-warning">Pending</td>
-                </tr>
-                <tr>
-                  <td>Social media marketing</td>
-                  <td class="font-weight-bold">$897</td>
-                  <td>26 Oct 2018</td>
-                  <td class="font-weight-medium text-success">Completed</td>
-                </tr>
+                @endforeach 
               </tbody>
             </table>
           </div>
@@ -275,60 +247,53 @@ Welcome {{ Auth::user()->name }}
     <div class="col-md-5 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">To Do Lists</h4>
+          <h4 class="card-title">Registered Locations</h4>
           <div class="list-wrapper pt-2">
             <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
-              <li>
+            <table class="table table-striped table-borderless">
+              <thead>
+                
+                <tr>
+                  <th>SN</th>
+                  <th>Location</th>
+                  <th>No. of Units</th>
+                   </tr> 
+               
+              </thead>
+              <tbody>
+              @foreach($locations as $location)
+                <tr>
+              
+            
+
                 <div class="form-check form-check-flat">
                   <label class="form-check-label">
-                    <input class="checkbox" type="checkbox">
-                    Meeting with Urban Team
+                   <!-- <input class="checkbox" type="checkbox">-->
+                   <td>{{$loop->iteration}}</td>
+                   <td>
+                    <a href="{{url('Admin/LocationDetails/'.$location->locationname)}}" class="btn btn-outline-primary">{{$location->locationname}}</a>
                   </label>
                 </div>
-                <i class="remove ti-close"></i>
-              </li>
-              <li class="completed">
-                <div class="form-check form-check-flat">
-                  <label class="form-check-label">
-                    <input class="checkbox" type="checkbox" checked>
-                    Duplicate a project for new customer
-                  </label>
-                </div>
-                <i class="remove ti-close"></i>
-              </li>
-              <li>
-                <div class="form-check form-check-flat">
-                  <label class="form-check-label">
-                    <input class="checkbox" type="checkbox">
-                    Project meeting with CEO
-                  </label>
-                </div>
-                <i class="remove ti-close"></i>
-              </li>
-              <li class="completed">
-                <div class="form-check form-check-flat">
-                  <label class="form-check-label">
-                    <input class="checkbox" type="checkbox" checked>
-                    Follow up of team zilla
-                  </label>
-                </div>
-                <i class="remove ti-close"></i>
-              </li>
-              <li>
-                <div class="form-check form-check-flat">
-                  <label class="form-check-label">
-                    <input class="checkbox" type="checkbox">
-                    Level up for Antony
-                  </label>
-                </div>
-                <i class="remove ti-close"></i>
-              </li>
+                <!--<i class="remove ti-close"></i>-->
+             
+              </td>
+              <td>{{$location->UnitCount}}</td>
+                  
+                </tr>
+                @endforeach
+               
+              </tbody>
+            </table>
+            
+             
+             
+             
             </ul>
           </div>
-          <div class="add-items d-flex mb-0 mt-2">
+          <!--<div class="add-items d-flex mb-0 mt-2">
             <input type="text" class="form-control todo-list-input"  placeholder="Add new task">
             <button class="add btn btn-icon text-primary todo-list-add-btn bg-transparent"><i class="ti-location-arrow"></i></button>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>
