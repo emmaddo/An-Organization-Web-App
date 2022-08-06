@@ -170,5 +170,78 @@ class ReportController extends Controller
                          }
                      }
 
-    
+                     public function byLocation(Request $request){
+                        if(!empty($request->startdate)){
+                        //return $request->input();
+                        $startdate=$request->startdate;
+                            $enddate=$request->enddate;
+                             /*$eachpayment = Dues::groupBy('email', 'name', 'created_at')
+                        ->selectRaw('sum(amount) as sum, email, name, created_at')
+                        ->whereBetween('created_at', ['1970-01-01', '2022-08-04'])*/
+                        $eachpayment = Dues::groupBy('location')
+                        ->selectRaw('sum(amount) as sum, location')
+                        ->whereBetween('datepaid', [$startdate, $enddate])
+                        ->get(); //this return collection 
+                        //dd($eachpayment);
+                     return view('Admin.bylocation', compact('eachpayment'));
+                        }
+                        else{
+                        $startdate='1970-01-01';
+                        //$enddate='2022-08-02';
+                        $enddate=date('Y-m-d');
+                        /*$eachpayment = Dues::groupBy('email', 'name', 'created_at')
+                        ->selectRaw('sum(amount) as sum, email, name, created_at')
+                        ->whereBetween('created_at', ['1970-01-01', '2022-08-04'])*/
+                        $eachpayment = Dues::groupBy('location')
+                        ->selectRaw('sum(amount) as sum, location')
+                        ->whereBetween('datepaid', [$startdate, $enddate])
+                        ->get(); //this return collection 
+                        //dd($eachpayment);
+                     return view('Admin.bylocation', compact('eachpayment'));
+                        }
+                         }
+                
+                         public function byLocationDetails(Request $request, $location){
+                            if(!empty($request->startdate)){
+                            //return $request->input();
+                            $startdate=$request->startdate;
+                                $enddate=$request->enddate;
+                                 /*$eachpayment = Dues::groupBy('email', 'name', 'created_at')
+                            ->selectRaw('sum(amount) as sum, email, name, created_at')
+                            ->whereBetween('created_at', ['1970-01-01', '2022-08-04'])*/
+                            $eachpayment = Dues::select('*')
+                            ->where('location', $location)
+                            ->whereBetween('datepaid', [$startdate, $enddate])
+                            ->get(); //this return collection 
+                            //$ind= Dues::where('unit', $unit)->first();
+                            $dname=$location;
+                            $totalamount=Dues::where('location', $location)
+                            ->whereBetween('datepaid', [$startdate, $enddate])
+                            ->sum('amount');
+                            
+                            //dd($eachpayment);
+                         return view('Admin.bylocationdetails', compact('eachpayment', 'dname', 'totalamount'));
+                           
+                            }
+                            else{
+                            $startdate='1970-01-01';
+                            //$enddate='2022-08-02';
+                            $enddate=date('Y-m-d');
+                            /*$eachpayment = Dues::groupBy('email', 'name', 'created_at')
+                            ->selectRaw('sum(amount) as sum, email, name, created_at')
+                            ->whereBetween('created_at', ['1970-01-01', '2022-08-04'])*/
+                            $eachpayment = Dues::select('*')
+                            ->where('location', $location)
+                            ->whereBetween('datepaid', [$startdate, $enddate])
+                            ->get(); //this return collection 
+                            //$ind= Dues::where('unit', $unit)->first();
+                            $dname=$location;
+                            $totalamount=Dues::where('location', $location)
+                            ->whereBetween('datepaid', [$startdate, $enddate])
+                            ->sum('amount');
+                            
+                            //dd($eachpayment);
+                         return view('Admin.bylocationdetails', compact('eachpayment', 'dname', 'totalamount'));
+                                 }
+                             } 
 }

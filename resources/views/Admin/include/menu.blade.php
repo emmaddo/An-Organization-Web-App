@@ -231,11 +231,17 @@ Welcome {{ Auth::user()->email }}
     <li class="nav-item  ">
         <a class="nav-link" data-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="forms">
         <i class="ti-clipboard menu-icon"></i>
-        <span class="menu-title">Unit Manager</span>
+        <span class="menu-title">Location/Unit Manager</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse " id="forms">
         <ul class="nav flex-column sub-menu">
+          <li class="nav-item ">
+            <a class="nav-link" href="{{url('Admin/RegLocation')}}">Register Location</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{{url('Admin/ViewLocations')}}">View Locations</a>
+          </li>
           <li class="nav-item ">
             <a class="nav-link" href="{{url('Admin/RegUnit')}}">Register Unit</a>
           </li>
@@ -298,6 +304,10 @@ Welcome {{ Auth::user()->email }}
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="{{url('Admin/ByUnit')}}">By Units</a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="{{url('Admin/ByLocation')}}">By Locations</a>
           </li>
                   </ul>
       </div>

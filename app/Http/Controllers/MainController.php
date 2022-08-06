@@ -16,18 +16,23 @@ use App\Models\Units;
 use App\Models\Minutes;
 use App\Models\Memo;
 use App\Models\Dues;
+use App\Models\Locations;
 
 class MainController extends Controller
 {
     public function adminDashboard(){
         $customerCount = customer::count();
-        $totalExpenses = DB::table('Expenses')->sum('amount');
-        $totalCompletedSales = DB::table('Sales')->where('status', 'paid')->sum('amount');
+        $totalExpenses = Expenses::sum('amount');
+        $totaldues=Dues::sum('amount');
+        $duesmonth=Dues::where('month', date('F'))->sum('amount');
+        $duesyear=Dues::where('year', date('Y'))->sum('amount');
+        $no_members=Users::where('usertype', 'Member')->count();
+        $no_excos=Users::where('usertype', 'Exco')->count();
+        $no_units=Units::count();
+        $no_news=News::count();
         $posts= DB::table('customer')->orderBy('id', 'DESC')->get();
-        //Both Line 251 and commented Line 253 are the same and will both work fine
-        //$posts= customer::orderBy('id', 'DESC')->get();
-        $pendingOrder = Sales::where('status', 'pending')->count();
-        return view('Admin.dashboard', compact('customerCount', 'totalExpenses', 'posts', 'totalCompletedSales', 'pendingOrder'));
+        return view('Admin.dashboard', compact('customerCount', 'totalExpenses', 'posts', 'totaldues', 'duesmonth', 
+        'duesyear', 'no_members', 'no_excos', 'no_units', 'no_news'));
     }
 
       
@@ -188,7 +193,8 @@ class MainController extends Controller
                 }
 
                 public function RegUnit(){
-                    return view('Admin.registerunit');
+                    $locations= Locations::orderBy('locationname', 'ASC')->get(); 
+                    return view('Admin.registerunit', compact('locations'));
                  }
 
                  public function insertUnit(Request $request){
@@ -198,6 +204,7 @@ class MainController extends Controller
                         ]);
                     $unit = new Units();
                     $unit->unitname=$request->input('unitname');
+                    $unit->location=$request->input('location');
                     $unit->address=$request->input('address');
                     $unit->save();
                     return back()->with('success','Unit Registered Successfully');
@@ -219,12 +226,50 @@ class MainController extends Controller
 
                     public function unitDetails($unitname){
                         $posts= DB::table('Users')->where('unit', $unitname)->get();
-                        $dist= DB::table('Users')->where('unit', $unitname)->first();
+                        //$dist= DB::table('Users')->where('unit', $unitname)->first();
+                        $dname=$unitname;
+                        //dd($dname);
                         $numbermembers =Users::where('unit', $unitname)->count();
-                       return view('Admin.viewunitmembers', compact('posts', 'dist', 'numbermembers'));
+                       return view('Admin.viewunitmembers', compact('posts', 'numbermembers', 'dname'));
                     }
 
-
+                    public function RegLocation(){
+                        return view('Admin.registerlocation');
+                     }
+    
+                     public function insertLocation(Request $request){
+                        $request->validate([
+                            'locationname'=>'required|unique:Locations'
+                            
+                            ]);
+                        $location = new Locations();
+                        $location->locationname=$request->input('locationname');
+                        $location->address=$request->input('address');
+                        $location->save();
+                        return back()->with('success','Location Registered Successfully');
+                        }
+    
+                        public function viewLocations(){
+                            $posts= Locations::orderBy('locationname', 'ASC')->get();
+                            
+                            //$membersnumber =Units::where('status', 'pending')->count();
+                            //$membersnumber=DB::table('Units')->selectRaw('*, count(*)')->groupBy('unitname');
+                            $unitnumber =DB::table('Units')
+                            ->select(DB::raw('count(*) as unit_count'))
+                            ->groupBy('location')
+                            ->get();
+                           //dd($membersnumber);
+    
+                           return view('Admin.viewlocations', compact('posts', 'unitnumber'));
+                        }
+                        public function locationDetails($locationname){
+                            $posts= DB::table('Units')->where('location', $locationname)->get();
+                            //$dist= DB::table('Units')->where('location', $locationname)->first();
+                            $dname=$locationname;
+                            $numberunits =Units::where('location', $locationname)->count();
+                            return view('Admin.viewlocationunits', compact('posts', 'dname', 'numberunits'));
+                        }
+    
                     public function addMinutes(){
                         return view('Admin.addminutes');
                      }
@@ -449,11 +494,15 @@ if($checkdup > 0){
     return back()->with('fail','Payment Already Made for month'.' '.$value.' '.'in year'.' '.$request->input('year'));  
 }
 else{
-
+//get location of the unit
+$locationsearch=Units::where('unitname', $request->input('unit'))->first();
+$locationname_real=$locationsearch->location;
+//dd($locationname_real);
 $dues = new Dues();
     $dues->name=$request->input('name');
     $dues->email=$request->input('email');
     $dues->unit=$request->input('unit');
+    $dues->location=$locationname_real;
     $dues->amount=$request->input('amount');
     $dues->month=$value;
     $dues->year=$request->input('year');

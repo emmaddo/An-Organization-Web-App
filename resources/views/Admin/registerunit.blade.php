@@ -64,9 +64,19 @@
             <input type="text" name="unitname" class="form-control" id="exampleInputName1" placeholder="Enter Unit Name" required>
             <span style="color:red">@error('unitname'){{$message}} @enderror</span> 
         </div>
+        <div class="form-group">
+            <label for="exampleSelectGender">Location</label>
+              <select name="location" class="form-control" id="exampleSelectGender" required>
+              <option>Select Location</option> 
+              @foreach($locations as $location)
+              <option value="{{$location->locationname}}">{{$location->locationname}}</option>
+               @endforeach
+              </select>
+            </div>
+
           <div class="form-group">
             <label for="exampleInputEmail3">Unit Address</label>
-            <input type="text" name="address" class="form-control" id="exampleInputEmail3" placeholder="Enter News Intro">
+            <input type="text" name="address" class="form-control" id="exampleInputEmail3" placeholder="Enter Unit Address">
           </div>
         
           <button type="submit" class="btn btn-primary mr-2">Register Unit</button>

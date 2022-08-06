@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 05, 2022 at 10:22 AM
+-- Generation Time: Aug 06, 2022 at 01:04 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -80,6 +80,7 @@ CREATE TABLE `dues` (
   `amount` varchar(50) DEFAULT NULL,
   `month` varchar(50) DEFAULT NULL,
   `unit` varchar(50) DEFAULT NULL,
+  `location` varchar(100) DEFAULT NULL,
   `year` varchar(50) DEFAULT NULL,
   `datepaid` varchar(50) DEFAULT NULL,
   `remarks` varchar(100) DEFAULT NULL,
@@ -91,25 +92,26 @@ CREATE TABLE `dues` (
 -- Dumping data for table `dues`
 --
 
-INSERT INTO `dues` (`id`, `name`, `email`, `amount`, `month`, `unit`, `year`, `datepaid`, `remarks`, `created_at`, `updated_at`) VALUES
-(36, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'January', 'Unit 2', '2022', '2022-08-01', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
-(37, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'February', 'Unit 2', '2022', '2022-08-01', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
-(38, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'March', 'Unit 2', '2022', '2022-08-02', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
-(39, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'April', 'Unit 2', '2022', '2022-08-02', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
-(40, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'May', 'Unit 2', '2022', '2022-08-02', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
-(41, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'June', 'Unit 2', '2022', '2022-08-03', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
-(42, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'July', 'Unit 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
-(43, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'August', 'Unit 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
-(44, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'September', 'Unit 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
-(45, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'October', 'Unit 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
-(46, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'November', 'Unit 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
-(47, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'December', 'Unit 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
-(48, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'January', 'Unit 1', '2022', '2022-08-01', 'Paid for the whole of year 2022', '2022-08-04 10:19:37', '2022-08-04 10:19:37'),
-(49, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'February', 'Unit 1', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
-(50, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'March', 'Unit 1', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
-(51, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'April', 'Unit 1', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
-(52, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'May', 'Unit 1', '2022', '2022-08-05', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
-(53, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'January', 'Unit 2', '2023', '2022-08-05', 'testing', '2022-08-05 05:41:39', '2022-08-05 05:41:39');
+INSERT INTO `dues` (`id`, `name`, `email`, `amount`, `month`, `unit`, `location`, `year`, `datepaid`, `remarks`, `created_at`, `updated_at`) VALUES
+(36, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'January', 'Unit 2', 'Akure 2', '2022', '2022-08-01', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
+(37, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'February', 'Unit 2', 'Akure 2', '2022', '2022-08-01', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
+(38, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'March', 'Unit 2', 'Akure 2', '2022', '2022-08-02', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
+(39, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'April', 'Unit 2', 'Akure 2', '2022', '2022-08-02', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
+(40, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'May', 'Unit 2', 'Akure 2', '2022', '2022-08-02', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
+(41, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'June', 'Unit 2', 'Akure 2', '2022', '2022-08-03', 'Paid for the whole of year 2022', '2022-08-04 10:18:55', '2022-08-04 10:18:55'),
+(42, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'July', 'Unit 2', 'Akure 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
+(43, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'August', 'Unit 2', 'Akure 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
+(44, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'September', 'Unit 2', 'Akure 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
+(45, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'October', 'Unit 2', 'Akure 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
+(46, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'November', 'Unit 2', 'Akure 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
+(47, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'December', 'Unit 2', 'Akure 2', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:18:56', '2022-08-04 10:18:56'),
+(48, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'January', 'Unit 1', 'Akure 1', '2022', '2022-08-01', 'Paid for the whole of year 2022', '2022-08-04 10:19:37', '2022-08-04 10:19:37'),
+(49, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'February', 'Unit 1', 'Akure 1', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
+(50, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'March', 'Unit 1', 'Akure 1', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
+(51, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'April', 'Unit 1', 'Akure 1', '2022', '2022-08-04', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
+(52, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', '1500', 'May', 'Unit 1', 'Akure 1', '2022', '2022-08-05', 'Paid for the whole of year 2022', '2022-08-04 10:19:38', '2022-08-04 10:19:38'),
+(53, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'January', 'Unit 2', 'Akure 2', '2023', '2022-08-05', 'testing', '2022-08-05 05:41:39', '2022-08-05 05:41:39'),
+(54, 'Ado Ibrahim', 'ermsapp@gmail.com', '1500', 'June', 'Unit 2', 'Akure 2', '2023', '2022-08-05', 'testing', '2022-08-05 23:58:28', '2022-08-05 23:58:28');
 
 -- --------------------------------------------------------
 
@@ -150,6 +152,29 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `locations`
+--
+
+CREATE TABLE `locations` (
+  `id` int(11) NOT NULL,
+  `locationname` varchar(100) DEFAULT NULL,
+  `address` varchar(500) DEFAULT NULL,
+  `created_at` varchar(100) DEFAULT NULL,
+  `updated_at` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `locations`
+--
+
+INSERT INTO `locations` (`id`, `locationname`, `address`, `created_at`, `updated_at`) VALUES
+(1, 'Akure 1', 'Ijapo Estate', '2022-08-05 22:23:41', '2022-08-05 22:23:41'),
+(2, 'Akure 2', 'Alagbaka', '2022-08-05 22:24:22', '2022-08-05 22:24:22'),
+(3, 'Owo', 'Owo Main Town', '2022-08-05 22:26:21', '2022-08-05 22:26:21');
 
 -- --------------------------------------------------------
 
@@ -336,6 +361,7 @@ INSERT INTO `sales` (`id`, `productname`, `buyername`, `buyeremail`, `amount`, `
 CREATE TABLE `units` (
   `id` int(11) NOT NULL,
   `unitname` varchar(50) DEFAULT NULL,
+  `location` varchar(100) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
   `created_at` varchar(50) DEFAULT NULL,
   `updated_at` varchar(50) DEFAULT NULL
@@ -345,11 +371,12 @@ CREATE TABLE `units` (
 -- Dumping data for table `units`
 --
 
-INSERT INTO `units` (`id`, `unitname`, `address`, `created_at`, `updated_at`) VALUES
-(1, 'Unit 1', 'Ondo Road', '2022-07-31 20:34:40', '2022-07-31 20:34:40'),
-(2, 'Unit 2', 'Ijapo', '2022-07-31 20:36:05', '2022-07-31 20:36:05'),
-(4, 'Oshofha', 'express road', '2022-08-01 00:18:25', '2022-08-01 00:18:25'),
-(5, 'Adex Bright', 'Oba Adeshida Road Akure', '2022-08-01 00:18:48', '2022-08-01 00:18:48');
+INSERT INTO `units` (`id`, `unitname`, `location`, `address`, `created_at`, `updated_at`) VALUES
+(1, 'Unit 1', 'Akure 1', 'Ondo Road', '2022-07-31 20:34:40', '2022-07-31 20:34:40'),
+(2, 'Unit 2', 'Akure 2', 'Ijapo', '2022-07-31 20:36:05', '2022-07-31 20:36:05'),
+(4, 'Oshofha', 'Akure 1', 'express road', '2022-08-01 00:18:25', '2022-08-01 00:18:25'),
+(5, 'Adex Bright', 'Owo', 'Oba Adeshida Road Akure', '2022-08-01 00:18:48', '2022-08-01 00:18:48'),
+(7, 'Oda Unit', 'Akure 2', 'Oda Town', '2022-08-05 23:42:21', '2022-08-05 23:42:21');
 
 -- --------------------------------------------------------
 
@@ -385,7 +412,8 @@ INSERT INTO `users` (`id`, `user_id`, `name`, `email`, `usertype`, `position`, `
 (2, NULL, 'Ado Ibrahim', 'ermsapp@gmail.com', 'Exco', NULL, 'Activated', NULL, '08036909804', 'Male', 'Unit 2', NULL, '$2y$10$01nhQc9dqWcZ7D5GVU/CuujLvBpe01RsOnc1W6v5aPMBRjAgvit9a', NULL, 'nichcoin-presale.jpg', NULL, '2022-07-29 22:45:41'),
 (28, NULL, 'Oluwaseun Owookade', 'y2kemmaddo@yahoo.com', 'Exco', 'Treasurer', 'Activated', NULL, '08036909804', 'Female', 'Unit 1', NULL, '$2y$10$Xan.oN6Hac5Gzl/SGlWSZ.8uhkSl9kV2Lq5BGISMqLxE40OiokkmW', NULL, 'mouse.jpg', '2022-07-31 09:02:55', '2022-07-31 09:02:55'),
 (32, NULL, 'Book Me Now', 'bookmenow.com.ng@gmail.com', 'Member', 'member', 'Activated', NULL, '08036909804', 'Male', 'Unit 1', NULL, '$2y$10$wSSgN2AyMzXZuQBQs0zo9eMYExnPKpFwVAwwTRem7K4SlaysQFQPa', NULL, 'abitrep.jpg', '2022-08-02 18:05:53', '2022-08-02 18:05:53'),
-(33, NULL, 'Nwobodo Izu', 'nwobodoizu55@gmail.com', 'Member', 'member', 'Activated', NULL, '08036909804', 'Male', 'Unit 1', NULL, '$2y$10$r4pyywiPp7WTPxixN8Q1cOMUeLt6KipqmH8oySQw4g89Gg4uFbGhq', NULL, 'anambra_naira_background.png', '2022-08-02 18:09:08', '2022-08-02 18:09:08');
+(33, NULL, 'Nwobodo Izu', 'nwobodoizu55@gmail.com', 'Member', 'member', 'Activated', NULL, '08036909804', 'Male', 'Unit 1', NULL, '$2y$10$r4pyywiPp7WTPxixN8Q1cOMUeLt6KipqmH8oySQw4g89Gg4uFbGhq', NULL, 'anambra_naira_background.png', '2022-08-02 18:09:08', '2022-08-02 18:09:08'),
+(34, NULL, 'Prince Toluwani', 'pirro@gmail.com', 'Member', NULL, 'Activated', NULL, '08036909804', 'Male', 'Adex Bright', NULL, '$2y$10$.bfysNaM/GaxFxe5pZSNi.EUU0lO0l2aCjnqzX7E/ee2q63O2eVk6', NULL, 'abitrep.jpg', '2022-08-05 09:54:24', '2022-08-05 09:54:24');
 
 --
 -- Indexes for dumped tables
@@ -421,6 +449,12 @@ ALTER TABLE `expenses`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `locations`
+--
+ALTER TABLE `locations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `memo`
@@ -505,7 +539,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `dues`
 --
 ALTER TABLE `dues`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `expenses`
@@ -518,6 +552,12 @@ ALTER TABLE `expenses`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `memo`
@@ -565,13 +605,13 @@ ALTER TABLE `sales`
 -- AUTO_INCREMENT for table `units`
 --
 ALTER TABLE `units`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
-
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
-  <title>View {{$dname}}</title>
+  <title>Register Location</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- CSRF Token -->
   <meta name="_token" content="iOFHvxnnvQTiXxlCQ4HnHbqv8OWeGmpesk0fqKkI">
-  <link rel="shortcut icon" href="{{asset('../assets/images/favicon.ico')}}">
+  
+ <link rel="shortcut icon" href="{{asset('../assets/images/favicon.ico')}}">
 
   <!-- plugin css -->
   <link media="all" type="text/css" rel="stylesheet" href="{{asset('../assets/plugins/%40mdi/font/css/materialdesignicons.min.css')}}">
@@ -24,24 +24,27 @@
   <link media="all" type="text/css" rel="stylesheet" href="{{asset('../css/app.css')}}">
   <!-- end common css -->
 
-
-
   </head>
 <body data-base-url="https://www.bootstrapdash.com/demo/justdo-laravel-pro/template/vertical-default-light">
 
-  <!-- menu starts here -->
-@include('Admin/include.menu')
+<!-- menu starts here -->
+@include('Admin/include.menu');
 <!-- menu ends here --> 
 @if(!isset(Auth::user()->email))
-<script>window.location="{{url('Admin/login')}}";</script>
+<script>window.location="login";</script>
 @endif
-
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="card">
-  <div class="card-body">
-    <h4>{{$dname}} with total of {{$numbermembers}} Members</h4>
-    @if(Session::get('success'))
+          <div class="row">
+
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Register Location</h4>
+        <!--<p class="card-description">
+          Basic form elements
+        </p>-->
+        @if(Session::get('success'))
             <div class="alert alert-success">
 
             {{Session::get('success')}}
@@ -54,60 +57,36 @@
             {{session::get('fail')}}
             </div>
           @endif
-    <div class="row">
-      <div class="col-12">
-        <div class="table-responsive">
-            <table id="order-listing" class="table">
-              <thead>
-                <tr>
-                  <th>SN</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Unit</th>
-                  <th>Member Type</th>
-                  
-                  <th>View</th>
-				  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach($posts as $post)
-                <tr>
-                  <td>{{$loop->iteration}}</td>
-                  <td>{{$post->name}}</td>
-                  <td>{{$post->email}}</td>
-                  <td>{{$post->phone}}</td>
-                  <td>{{$post->unit}}</td>
-                  <td>{{$post->usertype}}</td>
-                  <!--<td>
-                    <label class="badge badge-info">On hold</label>
-                  </td>-->
-                  <td>
-                    <a href="{{url('Admin/MemberProfile/'.$post->id)}}" class="btn btn-outline-primary">View</a>
-                  </td>
-				   <td><a class="pe-2" href="{{url('Admin/EditMember/'.$post->id)}}"> <i class="mdi mdi-table-edit"></i></a> <a href="{{url('Admin/DeleteMember/'.$post->id)}}" onclick="return confirm('Are you sure you want to delete this Member Profile?')"> <i class="mdi mdi-delete"></i></a></td>
-                </tr>
-                @endforeach
-               
-              </tbody>
-            </table>
-          </div>
+        <form class="forms-sample" method="POST" action="/postreglocation" enctype="multipart/form-data">
+        @csrf   
+        <div class="form-group">
+            <label for="exampleInputName1">Location Name</label>
+            <input type="text" name="locationname" class="form-control" id="exampleInputName1" placeholder="Enter Location Name" required>
+            <span style="color:red">@error('unitname'){{$message}} @enderror</span> 
         </div>
+          <div class="form-group">
+            <label for="exampleInputEmail3">Location Address</label>
+            <input type="text" name="address" class="form-control" id="exampleInputEmail3" placeholder="Enter Location Address">
+          </div>
+        
+          <button type="submit" class="btn btn-primary mr-2">Register Location</button>
+          <button class="btn btn-light">Cancel</button>
+        </form>
+      </div>
     </div>
   </div>
+
 </div>
         </div>
-     <!--  footer -->
-        @include('Admin/include.footer')
-        <!--=================================
-        footer -->
-
+       
+<!-- Footer starts here -->
+@include('Admin/include.footer');
+<!-- footer ends here -->
 	   </div>
     </div>
   </div>
 
-  <!-- base js -->
+ <!-- base js -->
   <script src="{{asset('../js/app.js')}}"></script>
   <script src="{{asset('../assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
   <!-- end base js -->

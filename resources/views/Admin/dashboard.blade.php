@@ -55,19 +55,19 @@ Welcome {{ Auth::user()->name }}
         <div class="col-12 col-xl-7">
           <div class="d-flex align-items-center justify-content-between flex-wrap">
             <div class="border-right pr-4 mb-3 mb-xl-0">
-              <p class="text-muted">Total Payment</p>
-              <h4 class="mb-0 font-weight-bold"><i class="mdi mdi-currency-ngn"></i>{{number_format($totalExpenses,2)}}</h4>
+              <p class="text-muted">Total Dues Payment</p>
+              <h4 class="mb-0 font-weight-bold"><i class="mdi mdi-currency-ngn"></i>{{number_format($totaldues,2)}}</h4>
             </div>
             <div class="border-right pr-4 mb-3 mb-xl-0">
-              <p class="text-muted">August Payment</p>
-              <h4 class="mb-0 font-weight-bold"><i class="mdi mdi-currency-ngn"></i>{{number_format($totalExpenses,2)}}</h4>
+              <p class="text-muted">{{date('F')}} Dues</p>
+              <h4 class="mb-0 font-weight-bold"><i class="mdi mdi-currency-ngn"></i>{{number_format($duesmonth,2)}}</h4>
             </div>
             <div class="border-right pr-4 mb-3 mb-xl-0">
-              <p class="text-muted">2022 Payment</p>
-              <h4 class="mb-0 font-weight-bold"><i class="mdi mdi-currency-ngn"></i>{{number_format($totalExpenses,2)}}</h4>
+              <p class="text-muted">{{date('Y')}} Dues</p>
+              <h4 class="mb-0 font-weight-bold"><i class="mdi mdi-currency-ngn"></i>{{number_format($duesyear,2)}}</h4>
             </div>
             <div class="pr-3 mb-3 mb-xl-0">
-              <p class="text-muted">Total Due</p>
+              <p class="text-muted">Total Expenses</p>
               <h4 class="mb-0 font-weight-bold"><i class="mdi mdi-currency-ngn"></i>{{number_format($totalExpenses,2)}}</h4>
             </div>
             <!--<div class="mb-3 mb-xl-0">
@@ -84,10 +84,10 @@ Welcome {{ Auth::user()->name }}
         <div class="card-body">
           <p class="card-title text-md-center text-xl-left">Number of Members</p>
           <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{ $customerCount }}</h3>
+            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{$no_members}}</h3>
             <i class="ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
           </div>  
-          <p class="mb-0 mt-2 text-danger">0.22% <span class="text-black ml-1"><small>(30 days)</small></span></p>
+         <!-- <p class="mb-0 mt-2 text-danger">0.22% <span class="text-black ml-1"><small>(30 days)</small></span></p>-->
         </div>
       </div>
     </div>
@@ -97,10 +97,10 @@ Welcome {{ Auth::user()->name }}
         <div class="card-body">
           <p class="card-title text-md-center text-xl-left">Number of Excos</p>
           <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{ $customerCount }}</h3>
+            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{$no_excos}}</h3>
             <i class="ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
           </div>  
-          <p class="mb-0 mt-2 text-warning">2.00% <span class="text-black ml-1"><small>(30 days)</small></span></p>
+          <!--<p class="mb-0 mt-2 text-warning">2.00% <span class="text-black ml-1"><small>(30 days)</small></span></p>-->
         </div>
       </div>
     </div>
@@ -110,22 +110,22 @@ Welcome {{ Auth::user()->name }}
         <div class="card-body">
           <p class="card-title text-md-center text-xl-left">Total Units</p>
           <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{ $customerCount }}</h3>
+            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{ $no_units }}</h3>
             <i class="ti-agenda icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
           </div>  
-          <p class="mb-0 mt-2 text-success">10.00%<span class="text-black ml-1"><small>(30 days)</small></span></p>
+          <!--<p class="mb-0 mt-2 text-success">10.00%<span class="text-black ml-1"><small>(30 days)</small></span></p>-->
         </div>
       </div>
     </div>
     <div class="col-md-3 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <p class="card-title text-md-center text-xl-left">Total Locations</p>
+          <p class="card-title text-md-center text-xl-left">Total News</p>
           <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{ $customerCount }}</h3>
+            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{ $no_news }}</h3>
             <i class="ti-layers-alt icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
           </div>  
-          <p class="mb-0 mt-2 text-success">22.00%<span class="text-black ml-1"><small>(30 days)</small></span></p>
+         <!-- <p class="mb-0 mt-2 text-success">22.00%<span class="text-black ml-1"><small>(30 days)</small></span></p>-->
         </div>
       </div>
     </div>

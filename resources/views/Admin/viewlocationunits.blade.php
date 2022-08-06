@@ -40,7 +40,7 @@
         <div class="content-wrapper">
           <div class="card">
   <div class="card-body">
-    <h4>{{$dname}} with total of {{$numbermembers}} Members</h4>
+    <h4>{{$dname}} with total of {{$numberunits}} Units</h4>
     @if(Session::get('success'))
             <div class="alert alert-success">
 
@@ -62,32 +62,24 @@
                 <tr>
                   <th>SN</th>
                   <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Unit</th>
-                  <th>Member Type</th>
-                  
+                  <th>Address</th>
                   <th>View</th>
-				  <th>Actions</th>
+                  
+                  
+                  
+				 
                 </tr>
               </thead>
               <tbody>
                 @foreach($posts as $post)
                 <tr>
                   <td>{{$loop->iteration}}</td>
-                  <td>{{$post->name}}</td>
-                  <td>{{$post->email}}</td>
-                  <td>{{$post->phone}}</td>
-                  <td>{{$post->unit}}</td>
-                  <td>{{$post->usertype}}</td>
-                  <!--<td>
-                    <label class="badge badge-info">On hold</label>
-                  </td>-->
+                  <td>{{$post->unitname}}</td>
+                  <td>{{$post->address}}</td>
                   <td>
-                    <a href="{{url('Admin/MemberProfile/'.$post->id)}}" class="btn btn-outline-primary">View</a>
+                    <a href="{{url('Admin/UnitDetails/'.$post->unitname)}}" class="btn btn-outline-primary">View Members</a>
                   </td>
-				   <td><a class="pe-2" href="{{url('Admin/EditMember/'.$post->id)}}"> <i class="mdi mdi-table-edit"></i></a> <a href="{{url('Admin/DeleteMember/'.$post->id)}}" onclick="return confirm('Are you sure you want to delete this Member Profile?')"> <i class="mdi mdi-delete"></i></a></td>
-                </tr>
+                    </tr>
                 @endforeach
                
               </tbody>
