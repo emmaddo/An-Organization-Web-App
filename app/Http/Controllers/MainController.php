@@ -31,8 +31,9 @@ class MainController extends Controller
         $no_units=Units::count();
         $no_news=News::count();
         $posts= DB::table('customer')->orderBy('id', 'DESC')->get();
+        $news=News::get();
         return view('Admin.dashboard', compact('customerCount', 'totalExpenses', 'posts', 'totaldues', 'duesmonth', 
-        'duesyear', 'no_members', 'no_excos', 'no_units', 'no_news'));
+        'duesyear', 'no_members', 'no_excos', 'no_units', 'no_news','news'));
     }
 
       
