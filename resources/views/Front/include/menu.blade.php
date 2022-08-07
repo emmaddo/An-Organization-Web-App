@@ -42,10 +42,11 @@
 				            <div class="navbar-collapse collapse clearfix">
 				                <ul class="navigation clearfix">
 
-				                    <li class="current"><a href="#">home</a></li>  
-									 <li class="current"><a href="#">about</a></li>
-									  <li class="current"><a href="#">news</a></li> 
-									   <li class="current"><a href="#">seminars</a></li>  
+				                    <li class="current"><a href="{{url('Home')}}">home</a></li>  
+									 <li class="current"><a href="{{url('About')}}">About</a></li>
+									 <li class="current"><a href="{{url('Service')}}">Services</a></li>
+									  <li class="current"><a href="{{url('News')}}">news</a></li> 
+									   <!--<li class="current"><a href="#">seminars</a></li> --> 
 									    <li class="current"><a href="#">Contact</a></li>  
 				                    
 				                </ul>

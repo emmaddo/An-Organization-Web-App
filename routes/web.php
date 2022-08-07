@@ -20,6 +20,10 @@ use App\Http\Controllers\ReportController;
 
 Route::get('/', [FrontController::class, 'index']);
 Route::get('/Home', [FrontController::class, 'index']);
+Route::get('/About', [FrontController::class, 'about']);
+Route::get('/Service', [FrontController::class, 'service']);
+Route::get('/News', [FrontController::class, 'news']);
+Route::get('/NewsDetails/{id}', [FrontController::class, 'newsDetails']);
 Route::get('Admin/Dashboard', [MainController::class, 'adminDashboard']);
 Route::get('Admin/login', [UserController::class, 'login']);
 Route::post('Admin/checklogin', [UserController::class, 'checklogin']);
