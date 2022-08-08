@@ -14,25 +14,39 @@ class FrontController extends Controller
         //$intros= DB::table('News')->where('id',4)->get(['intro']);
         //$intros= DB::table('News')->where('id',5)->first();
         $getexcos= DB::table('Users')->where('usertype', 'Exco')->get();
-        return view('Front.index', compact('getnews', 'getexcos'));
+        $footer=News::limit(2)->orderBy('id', 'DESC')->get();
+        return view('Front.index', compact('getnews', 'getexcos', 'footer'));
          }
 
          public function about(){
-            return view('Front.about');
+            $footer=News::limit(2)->orderBy('id', 'DESC')->get();
+            return view('Front.about', compact('footer'));
          }
          public function service(){
-            return view('Front.service');
+            $footer=News::limit(2)->orderBy('id', 'DESC')->get();
+            return view('Front.service', compact('footer'));
+         }
+
+         public function contactUs(){
+            $footer=News::limit(2)->orderBy('id', 'DESC')->get();
+            return view('Front.contact', compact('footer'));
          }
 
          public function news(){
-            $getnews=News::get(); 
-            return view('Front.news', compact('getnews'));
+            $getnews=News::orderBy('id', 'DESC')->get(); 
+            $footer=News::limit(2)->orderBy('id', 'DESC')->get();
+            return view('Front.news', compact('getnews', 'footer'));
          }
 
          public function newsDetails($id){
             $newsdet=News::where('id', $id)->first();
+            $no_news=News::count();
+            $getnews=News::orderBy('id', 'DESC')->get(); 
+            $footer=News::limit(2)->orderBy('id', 'DESC')->get();
            //dd($newsdet);
-           return view('Front.newsdetails', compact('newsdet'));
+           return view('Front.newsdetails', compact('newsdet', 'no_news', 'getnews', 'footer'));
             
          }
+
+         
 }

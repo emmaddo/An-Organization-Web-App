@@ -664,12 +664,12 @@ distribution of table water.</li>
 							<img src="{{asset('../storage/front/images/news/'.$news->image_name)}}"  alt="Image" class="img-responsive">
 						</div>
 						<div class="news-post-text">
-							<h3><a href="#">{{$news->title}}</a></h3>
+							<h3><a href="{{url('/NewsDetails/'.$news->id)}}">{{$news->title}}</a></h3>
 							<p>{{Str::limit($news->intro, 90)}}</p>
 						</div>
 						<div class="news-post-meta">
 						<p>	<i class="fa fa-calendar"></i> {{substr($news->created_at, 10)}}</p>
-							<center><a class="thm-btn yellow-bg" href="#">Read More</a> </center>
+							<center><a class="thm-btn yellow-bg" href="{{url('/NewsDetails/'.$news->id)}}">Read More</a> </center>
 						<!--	<a href="#"><i class="fa fa-heart-o"></i> 370 likes</a>
 							<a href="#"><i class="fa fa-comments-o"></i> 24 comments</a>-->
 						</div>

@@ -32,7 +32,7 @@
 			</div>
 			<div class="">
 				<ul class= "middle">
-					<li><a href="#">Home</a></li>
+				<li><a href="{{url('/Home')}}">Home</a></li>
 					<li><a class="inner" href="#">About us</a></li>
 				</ul>
 			</div>

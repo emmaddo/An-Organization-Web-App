@@ -30,7 +30,7 @@
 			</div>
 			<div class="">
 				<ul class= "middle">
-					<li><a href="index-2.html">Home</a></li>
+                <li><a href="{{url('/Home')}}">Home</a></li>
 					<li><a class="inner" href="#">News Page</a></li>
 				</ul>
 			</div>
@@ -42,23 +42,23 @@
 				<div class="row">
 				@foreach($getnews as $news)
 					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="news-post">
-							<div class="news-post-image">
-								<div class="news-overlay"></div>	
-								<!--<div class="news-category"><a href="#">Business</a></div>-->	
-								<img src="{{asset('../storage/front/images/news/'.$news->image_name)}}" alt="News" class="img-responsive">
-							</div>
-							<div class="news-post-text">
-								<h3><a href="{{url('/NewsDetails/'.$news->id)}}">{{$news->title}}</h3>
-								<p>{{Str::limit($news->intro, 120)}}</p>
-                                <center><a class="thm-btn yellow-bg" href="{{url('/NewsDetails/'.$news->id)}}">Read More</a> </center>
-							</div>
-							<div class="news-post-meta">
-								<a href="#"><i class="fa fa-user"></i>Admin</a>
-								<a href="#"><i class="fa fa-heart-o"></i> 370 likes</a>
-								<a href="#"><i class="fa fa-comments-o"></i> 24 comments</a>
-							</div>
+                    <div class="news-post">
+						<div class="news-post-image">
+							<div class="news-overlay"></div>	
+							<!--<div class="news-category"><a href="#">Business</a></div>-->	
+							<img src="{{asset('../storage/front/images/news/'.$news->image_name)}}"  alt="Image" class="img-responsive">
 						</div>
+						<div class="news-post-text">
+							<h3><a href="{{url('/NewsDetails/'.$news->id)}}">{{$news->title}}</a></h3>
+							<p>{{Str::limit($news->intro, 90)}}</p>
+						</div>
+						<div class="news-post-meta">
+						<p>	<i class="fa fa-calendar"></i> {{$news->created_at}}</p>
+							<center><a class="thm-btn yellow-bg" href="{{url('/NewsDetails/'.$news->id)}}">Read More</a> </center>
+						<!--	<a href="#"><i class="fa fa-heart-o"></i> 370 likes</a>
+							<a href="#"><i class="fa fa-comments-o"></i> 24 comments</a>-->
+						</div>
+					</div>
 					</div>
                     @endforeach
                    

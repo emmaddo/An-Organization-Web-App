@@ -47,51 +47,18 @@
 									 <li class="current"><a href="{{url('Service')}}">Services</a></li>
 									  <li class="current"><a href="{{url('News')}}">news</a></li> 
 									   <!--<li class="current"><a href="#">seminars</a></li> --> 
-									    <li class="current"><a href="#">Contact</a></li>  
+									    <li class="current"><a href="{{url('ContactUs')}}">Contact</a></li>  
 				                    
 				                </ul>
 
-				                <ul class="mobile-menu clearfix">
-
-				                    <li><a href="index-2.html">home</a></li>                 
-				                    
-				                    <li class="current"><a href="about.html">about</a></li>
-
-				                    <li class="dropdown"><a href="#">service</a>
-				                        <ul>
-											<li><a href="service.html">Services</a></li>
-											<li><a href="service-single.html">Service Single</a></li>
-										</ul>
-				                    </li>
-
-				                    <li class="dropdown"><a href="#">pages</a>
-										<ul>
-											<li><a href="shop.html">shop</a></li>
-											<li><a href="team.html">Team</a></li>
-											<li><a href="error.html">Error</a></li>
-										 </ul>
-				                    </li>
-
-				                    <li class="dropdown"><a href="#">Blog</a>
-										<ul>
-											
-											<li><a href="blog-grid.html">Blog Grid</a></li>
-											<li><a href="blog-with-sidebar.html">Blog With Sidebar</a></li>
-											<li><a href="blog-details.html">Blog Details</a></li>
-											
-										 </ul>
-									</li>
-
-				                    <li><a href="contact.html">Contact</a></li>
-
-				                </ul>
+				                
 				            </div>
 				        </nav>
 					</div>
 					<div class="col-md-2">
 						<div class="right-area">
 						   <div class="link_btn float_right">
-							   <a href="#" class="thm-btn">LOGIN</a>
+							   <a href="{{url('/Admin/login')}}" class="thm-btn">LOGIN</a>
 						   </div>
 						</div>	
 					</div>
