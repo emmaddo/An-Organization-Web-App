@@ -587,15 +587,19 @@ distribution of table water.</li>
 	                       
                     </div>
 					<div class="single-partner">
-	                    <img src="{{asset('../front/images/partners/nafdac.jpg')}}"  alt="">
+	                    <img src="{{asset('../front/images/partners/son.jpg')}}"  alt="">
 	                       
                     </div>
 					<div class="single-partner">
-	                    <img src="{{asset('../front/images/partners/nafdac.jpg')}}"  alt="">
+	                    <img src="{{asset('../front/images/partners/frsc.jpg')}}"  alt="">
 	                        
                     </div>
 					<div class="single-partner">
-	                    <img src="{{asset('../front/images/partners/nafdac.jpg')}}"  alt="">
+	                    <img src="{{asset('../front/images/partners/police.jpg')}}"  alt="">
+	                        
+                    </div> 
+					<div class="single-partner">
+	                    <img src="{{asset('../front/images/partners/environment.png')}}"  alt="">
 	                        
                     </div>          
 				</div>
